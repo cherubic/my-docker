@@ -1,2 +1,1 @@
-FROM golang:1.19.13-bookworm
-
+FROM mcr.microsoft.com/devcontainers/base:ubuntu-22.04

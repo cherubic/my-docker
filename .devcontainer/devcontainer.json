@@ -5,8 +5,23 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"build": {
 		"dockerfile": "Dockerfile",
+		"args": {
+			"https_proxy": "http://192.168.49.1:9305",
+			"http_proxy": "http://192.168.49.1:9305",
+			"HTTP_PROXY": "http://192.168.49.1:9305",
+			"HTTPS_PROXY": "http://192.168.49.1:9305",
+			"socks_proxy": "socks://192.168.49.1:9309",
+			"SOCKS_PROXY": "socks://192.168.49.1:9309",
+		}
 	},
-	"runArgs": ["--network=host"],
+	"features": {
+		"ghcr.io/devcontainers/features/go:1": {
+			"version": "1.19.13"
+		}
+	},
+	"runArgs": [
+		"--network=host"
+	],
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -19,19 +34,22 @@
 	},
 	"privileged": true,
 	"remoteUser": "root",
-
+	"containerEnv": {
+		"https_proxy": "http://127.0.0.1:9305",
+		"http_proxy": "http://127.0.0.1:9305",
+		"HTTP_PROXY": "http://127.0.0.1:9305",
+		"HTTPS_PROXY": "http://127.0.0.1:9305",
+		"socks_proxy": "socks://127.0.0.1:9309",
+		"SOCKS_PROXY": "socks://127.0.0.1:9309",
+	}
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "go version",
-
 	// Configure tool-specific properties.
 	// "customizations": {},
-
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
